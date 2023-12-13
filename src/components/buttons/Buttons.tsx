@@ -2,6 +2,7 @@ import { Button, ButtonWrapper } from "./buttonStyled";
 
 interface IButtonsProps {
   buttons: IButton[];
+  onClick: (value: string) => void;
 }
 
 interface IButton {
@@ -10,11 +11,16 @@ interface IButton {
   size?: string;
 }
 
-export const Buttons: React.FC<IButtonsProps> = ({ buttons }) => {
+export const Buttons: React.FC<IButtonsProps> = ({ buttons, onClick }) => {
   return (
     <ButtonWrapper>
       {buttons.map((item, index) => (
-        <Button key={index} color={item.color} size={item.size}>
+        <Button
+          onClick={() => onClick(item.text)}
+          key={index}
+          color={item.color}
+          size={item.size}
+        >
           {item.text}
         </Button>
       ))}
