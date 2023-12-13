@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.6ffdc707.css","mappings":"+DAEA,KAEE,wBAAiC,CADjC,oCAEF","sources":["index.css"],"sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Open+Sans\");\r\n\r\nbody {\r\n  font-family: \"IBM Plex Sans\", sans-serif;\r\n  background-color: rgb(0, 96, 141);\r\n}\r\n"],"names":[],"sourceRoot":""}

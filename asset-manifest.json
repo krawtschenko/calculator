@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/calculator/static/css/main.6ffdc707.css",
+    "main.js": "/calculator/static/js/main.4a2926c2.js",
+    "static/media/iPhone.png": "/calculator/static/media/iPhone.a5df25ff43cf0ebf2253.png",
+    "index.html": "/calculator/index.html",
+    "main.6ffdc707.css.map": "/calculator/static/css/main.6ffdc707.css.map",
+    "main.4a2926c2.js.map": "/calculator/static/js/main.4a2926c2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ffdc707.css",
+    "static/js/main.4a2926c2.js"
+  ]
+}
