@@ -7,6 +7,7 @@ interface IButtonsProps {
 
 interface IButton {
   text: string;
+  background: string;
   color: string;
   size?: string;
 }
@@ -18,6 +19,7 @@ export const Buttons: React.FC<IButtonsProps> = ({ buttons, onClick }) => {
         <Button
           onClick={() => onClick(item.text)}
           key={index}
+          background={item.background}
           color={item.color}
           size={item.size}
         >

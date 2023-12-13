@@ -1,14 +1,23 @@
 import styled from "styled-components";
 
 export const Calc = styled.div`
-  margin: 50px auto;
+  position: relative;
+  margin: 150px auto;
   padding: 18px;
   width: 300px;
   height: 500px;
   border-radius: 20px;
   background: black;
   color: white;
-  box-shadow: 4px 4px 4px #4f4f4f;
+  z-index: 1;
+
+  img {
+    position: absolute;
+    bottom: -60px;
+    left: -8px;
+    width: 350px;
+    z-index: -1;
+  }
 `;
 
 export const CalcScreen = styled.div`
@@ -23,5 +32,6 @@ export const CalcScreen = styled.div`
     text-align: right;
     font-size: 4rem;
     margin: 0;
+    user-select: none;
   }
 `;
