@@ -5,7 +5,6 @@ import { Calc, CalcScreen } from "./appStyled";
 import iPhone from "../../img/iPhone.png";
 
 function App() {
-  const [total, setTotal] = useState("0");
   const [previous, setPrevious] = useState("");
   const [current, setCurrent] = useState("");
   const [action, setAction] = useState("");
@@ -14,87 +13,65 @@ function App() {
   const actions = ["+", "-", "×", "÷"];
 
   const clearAll = () => {
-    setTotal("0");
     setPrevious("");
     setCurrent("");
     setAction("");
   };
 
+  const switchAction = (action: string) => {
+    switch (action) {
+      case "+":
+        setPrevious(String(+previous + +current));
+        break;
+      case "-":
+        setPrevious(String(+previous - +current));
+        break;
+      case "×":
+        setPrevious(String(+previous * +current));
+        break;
+      case "÷":
+        setPrevious(String(+previous / +current));
+        break;
+    }
+    setCurrent("");
+  };
+
   const onClick = (value: string) => {
     if (value === "AC") {
       clearAll();
-    }
-    if (value === "%") {
-      setTotal(String(+previous / 100));
-      setPrevious("");
-    }
-    if (value === "±") {
+    } else if (value === "%") {
+      setPrevious(String(+previous / 100));
+    } else if (value === "±") {
       if (previous !== "" && current === "") {
         setPrevious(String(+previous * -1));
-      }
-      if (action !== "" && current !== "") {
+      } else if (action !== "" && current !== "") {
         setCurrent(String(+current * -1));
       }
-    }
-    if (value === "=") {
-      switch (action) {
-        case "+":
-          setTotal(String(+previous + +current));
-          break;
-        case "-":
-          setTotal(String(+previous - +current));
-          break;
-        case "×":
-          setTotal(String(+previous * +current));
-          break;
-        case "÷":
-          setTotal(String(+previous / +current));
-          break;
-      }
-      setPrevious("");
-      setCurrent("");
-      setAction("");
-    }
-    if (numbers.includes(value) && action === "") {
+    } else if (value === "=") {
+      switchAction(action);
+    } else if (numbers.includes(value) && action === "") {
       if (previous.length < 8) {
         setPrevious((state) => state + value);
       }
-    }
-    if (actions.includes(value)) {
+    } else if (actions.includes(value)) {
       setAction(value);
-    }
-    if (previous !== "" && action !== "" && numbers.includes(value)) {
+    } else if (previous !== "" && action !== "" && numbers.includes(value)) {
       if (current.length < 8) {
         setCurrent((state) => state + value);
       }
-    }
-    if (current !== "" && action !== "" && actions.includes(value)) {
-      switch (action) {
-        case "+":
-          setPrevious(String(+previous + +current));
-          break;
-        case "-":
-          setPrevious(String(+previous - +current));
-          break;
-        case "×":
-          setPrevious(String(+previous * +current));
-          break;
-        case "÷":
-          setPrevious(String(+previous / +current));
-          break;
-      }
-      setCurrent("");
+    } else if (current !== "" && action !== "" && actions.includes(value)) {
+      switchAction(action);
     }
   };
 
-  const totalLimit = total.length < 8 ? total : total.slice(0, 7) + "..";
+  const limit = previous.length < 8 ? previous : previous.slice(0, 8);
 
   return (
     <>
       <Calc>
         <img src={iPhone} alt="iPhone" />
         <CalcScreen>
-          <p>{current || action || previous || totalLimit}</p>
+          <p>{current || limit || "0"}</p>
         </CalcScreen>
         <Buttons buttons={buttonsData} onClick={onClick} />
       </Calc>
